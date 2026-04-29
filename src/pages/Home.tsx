@@ -81,12 +81,10 @@ const Description = styled.p`
     color: ${props => props.theme.colors.text.disabled};
 `;
 
-
 const CardContainer = styled.div`
-display: flex;
+    display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    
 `;
 const Card = styled(Link)`
     width: calc((100% - 40px) / 3);
@@ -103,20 +101,18 @@ const Card = styled(Link)`
     &:hover {
         transform: translateY(-5px);
         border-color: ${props => props.theme.colors.primary};
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.65);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
-    
-    
 `;
 
 const IconBox = styled.div`
-font-size: 40px;
-color: ${props => props.theme.colors.primary};
+    font-size: 40px;
+    color: ${props => props.theme.colors.primary};
     margin-bottom: 10px;
 `;
 
 const ProjectTitle = styled.h3`
-font-size: 20px;
+    font-size: 20px;
     font-weight: 700;
     color: ${props => props.theme.colors.text.default};
 `;
