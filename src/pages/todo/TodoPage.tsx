@@ -1,4 +1,4 @@
-import { useState, type SubmitEvent } from "react";
+import { useState, type SubmitEvent, useEffect } from "react";
 import styled from "styled-components";
 import { FaPlus } from "react-icons/fa";
 
@@ -63,7 +63,15 @@ const Title = styled.h2`
 
 function TodoPage() {
     const [inputValue, setInputValue] = useState("");  // 인풋에 입력
-    const [todos, setTodos] = useState<TodoType[]>([]);
+    const [todos, setTodos] = useState<TodoType[]>(() => {
+        // todos라는 state가 TodoPage컴포넌트가 불러와줄 때 마련되는 데,
+        // 그 저장소의 초기값은 이 함수에서 리턴 된 값으로 결정됨
+        // localStorage에서 "todos"라는 키를 가진 값을 불러오고
+        // 그값이 '있으면" Javascript의 객체(배열) 형태로 반환에서 리턴하고, "없으면" 빈 배열을 리턴
+        const storedTodos = localStorage.getItem("todos");
+        return storedTodos ? JSON.parse(storedTodos) : [];
+    }); // 할일 목록을 관리
+
     const handleAddTodo = (event: SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (!inputValue.trim()) return;
@@ -75,6 +83,12 @@ function TodoPage() {
         setTodos([...todos, newTodo]);
         setInputValue("");
     };
+
+    useEffect(() => {
+        // todos라는 state는 현재 Array를 저장하고 있기 때문에
+        // 그값을 localStorage에 저장하기 위해서는 JSON 형식으로 바꿔줄 필요가 있음
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
 
     return (
         <Container>
