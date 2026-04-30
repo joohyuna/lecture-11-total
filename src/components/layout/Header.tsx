@@ -58,10 +58,10 @@ const NavItem = styled(Link)<{ $isActive: boolean }>`
 `;
 
 const ThemeToggleButton = styled.button`
-display: flex;
-justify-content: center;
-align-items: center;
-width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
     height: 36px;
     gap: 8px;
     border-radius: 20px;
@@ -76,9 +76,7 @@ width: 90px;
         border-color: ${props => props.theme.colors.primary};
         color: ${props => props.theme.colors.primary};
     }
-    
 `;
-
 
 type MenuType = {
     path: string;
@@ -165,7 +163,7 @@ function Header() {
                 ) : (
                     <>
                         <FaSun size={16} /> 라이트
-                        </>
+                    </>
                 )}
             </ThemeToggleButton>
         </HeaderContainer>

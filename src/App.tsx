@@ -13,12 +13,12 @@ function App() {
     });
 
     const toggleTheme = () => {
-        setTheme(prev => prev === "dark" ? "light" : "dark");
+        setTheme(prev => (prev === "dark" ? "light" : "dark"));
     };
 
     useEffect(() => {
         localStorage.setItem("theme", theme);
-    }, [theme])
+    }, [theme]);
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>

@@ -1,6 +1,6 @@
 import { useState, type SubmitEvent, useEffect } from "react";
 import styled from "styled-components";
-import { FaCheck, FaPlus, FaTractor, FaTrash } from "react-icons/fa";
+import { FaCheck, FaPlus, FaTrash } from "react-icons/fa";
 
 type TodoType = {
     id: number;
