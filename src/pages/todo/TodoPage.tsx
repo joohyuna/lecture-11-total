@@ -34,7 +34,7 @@ const StyledInput = styled.input`
     color: ${props => props.theme.colors.text.default};
     font-size: 16px;
     outline: none;
-    &:hover {
+    &:focus {
         border-color: ${props => props.theme.colors.primary};
     }
 `;
