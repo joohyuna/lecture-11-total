@@ -1,3 +1,4 @@
+// 메인페이지 완료  page
 import type { ReactNode } from "react";
 import {
     FaBitcoin,
@@ -17,7 +18,7 @@ type ProjectType = {
     icon: ReactNode;
 };
 
-const projectList: ProjectType[] = [
+const ProjectList: ProjectType[] = [
     {
         title: "투두리스트",
         desc: "체계적인 일정 관리와 할 일 목록 기록",
@@ -125,7 +126,7 @@ function Home() {
             </WelcomeSection>
 
             <CardContainer>
-                {projectList.map((value, index) => (
+                {ProjectList.map((value, index) => (
                     <Card key={index} to={value.path}>
                         <IconBox>{value.icon}</IconBox>
                         <ProjectTitle>{value.title}</ProjectTitle>

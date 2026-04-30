@@ -3,6 +3,7 @@ import {
     FaBitcoin,
     FaBook,
     FaCheckSquare,
+    FaClipboardList,
     FaFilm,
     FaHome,
     FaMoon,
@@ -105,6 +106,11 @@ const menuList: MenuType[] = [
         path: "/movie",
         label: "Movie",
         icon: <FaFilm size={18} />,
+    },
+    {
+        path: "/board",
+        label: "Board",
+        icon: <FaClipboardList size={18} />,
     },
     {
         path: "/rocket",
