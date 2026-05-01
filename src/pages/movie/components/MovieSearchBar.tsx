@@ -9,12 +9,13 @@ import { FiSearch } from "react-icons/fi";
 const FormBox = styled.form`
     display: flex;
     flex: 1;
+    position: relative;
 `;
 
 const Input = styled.input`
     flex: 1;
     padding: 12px 15px;
-    border-radius: 8px;
+    border-radius: 22px;
     border: 1px solid ${props => props.theme.colors.divider};
     background-color: ${props => props.theme.colors.background.default};
     color: ${props => props.theme.colors.text.default};
@@ -26,11 +27,14 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-    padding: 0 20px;
-    background-color: ${props => props.theme.colors.primary};
+    position: absolute;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    background-color: ${props => props.theme.colors.info};
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 50%;
     cursor: pointer;
     display: flex;
     justify-content: center;

@@ -16,29 +16,51 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 `;
 
 const SearchBox = styled.div`
     display: flex;
+    width: 60%;
     gap: 10px;
     padding: 20px;
-    border-radius: 16px;
+    border-radius: 43px;
     background-color: ${props => props.theme.colors.background.paper};
     border: 1px solid ${props => props.theme.colors.divider};
-    align-items: center;
+`;
+
+const SearchTitle = styled.h2`
+    font-size: 28px;
+    padding: 20px;
+    color: ${props => props.theme.colors.primary};
+    text-align: center;
+    span {
+        font-weight: 300;
+        font-size: 22px;
+    }
 `;
 
 const ListBox = styled.div`
     display: flex;
-    background-color: ${props => props.theme.colors.background.paper};
-    border: 1px solid ${props => props.theme.colors.divider};
-    padding: 20px;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    padding-top: 30px
 `;
 
 const List = styled.ul`
     display: flex;
     flex-wrap: wrap;
+    gap: 20px;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
 `;
+
+
 
 function Search() {
     const [list, setList] = useState<MovieItem[]>([]);
@@ -69,8 +91,11 @@ function Search() {
 
     return (
         <Container>
+            <SearchTitle>
+                Search Movies <span>: Keywords</span> <strong>{k} </strong>
+            </SearchTitle>
             <SearchBox>
-                <h2>검색 키워드 : {k}</h2> <MovieSearchBar />
+                <MovieSearchBar />
             </SearchBox>
 
             {loading && <p>Loading...</p>}

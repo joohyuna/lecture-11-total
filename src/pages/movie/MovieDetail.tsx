@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { IoChevronBack } from "react-icons/io5";
 
 type MovieDetail = {
     Title: string;
@@ -11,34 +12,107 @@ type MovieDetail = {
     Director: string;
 };
 
-const Wrap = styled.div`
-    padding: 40px;
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+`;
 
+const ContentBox = styled.div`
+    background-color: ${props => props.theme.colors.background.paper};
+    border: 1px solid ${props => props.theme.colors.divider};
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    gap: 10px;
     img {
-        width: 240px;
+        height: 600px;
         border-radius: 12px;
     }
 `;
 
 const BackButton = styled.button`
-    display: block;
-    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
     background: none;
     border: none;
-    color: #ff5959;
+    color: ${props => props.theme.colors.error};
     font-size: 16px;
     cursor: pointer;
     padding: 0;
+    text-align: left;
+    gap: 3px;
 
     &:hover {
         text-decoration: underline;
     }
+    svg {
+        font-size: 20px;
+    }
 `;
 
+const DetailBox = styled.div`
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+`;
+const DetailInfo = styled.div`
+    width: 100%;
+    h1 {
+        color: ${props => props.theme.colors.primary};
+        border-bottom: 1px solid ${props => props.theme.colors.divider};
+        font-size: 42px;
+        padding: 16px 0;
+        opacity: 0.9;
+    }
+`;
+
+const DetailInfoList = styled.ul`
+    border-top: 1px solid ${props => props.theme.colors.background.default};
+    list-style: none;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 18px;
+    li {
+        display: flex;
+        strong {
+            width: 80px;
+            color: ${props => props.theme.colors.text.disabled};
+        }
+    }
+`;
+
+
+
+
 const Plot = styled.p`
+    border-top: 1px solid ${props => props.theme.colors.divider};
     line-height: 1.6;
     margin-top: 20px;
+    padding-top: 20px;
+    opacity: 0.86;
+    max-height: 360px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background-color: ${props => props.theme.colors.divider};
+    }
 `;
+
+
 
 function Detail() {
     const { id } = useParams();
@@ -60,23 +134,37 @@ function Detail() {
     if (!movie) return <p>Loading...</p>;
 
     return (
-        <Wrap>
-            <BackButton onClick={() => navigate(-1)}>&larr; Back</BackButton>
+        <Container>
+            <BackButton onClick={() => navigate(-1)}>
+                <IoChevronBack /> Back
+            </BackButton>
+            <ContentBox>
+                <img src={movie.Poster} alt={movie.Title} />
 
-            <img src={movie.Poster} alt={movie.Title} />
-
-            <h1>{movie.Title}</h1>
-            <p>
-                <strong>Year:</strong> {movie.Year}
-            </p>
-            <p>
-                <strong>Genre:</strong> {movie.Genre}
-            </p>
-            <p>
-                <strong>Director:</strong> {movie.Director}
-            </p>
-            <Plot>{movie.Plot}</Plot>
-        </Wrap>
+                <DetailBox>
+                    <DetailInfo>
+                        <h1>
+                            {movie.Title}
+                        </h1>
+                        <DetailInfoList>
+                            <li>
+                                <strong>Year </strong>
+                                {movie.Year}
+                            </li>
+                            <li>
+                                <strong>Genre </strong>
+                                {movie.Genre}
+                            </li>
+                            <li>
+                                <strong>Director </strong>
+                                {movie.Director}
+                            </li>
+                        </DetailInfoList>
+                    </DetailInfo>
+                    <Plot>{movie.Plot}</Plot>
+                </DetailBox>
+            </ContentBox>
+        </Container>
     );
 }
 
