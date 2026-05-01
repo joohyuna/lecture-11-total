@@ -60,11 +60,7 @@ const DetailBox = styled.div`
     padding: 0 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-`;
-const DetailInfo = styled.div`
-    width: 100%;
     h1 {
         color: ${props => props.theme.colors.primary};
         border-bottom: 1px solid ${props => props.theme.colors.divider};
@@ -73,11 +69,12 @@ const DetailInfo = styled.div`
         opacity: 0.9;
     }
 `;
+const DetailInfo = styled.div`
+    width: 100%;
+`;
 
 const DetailInfoList = styled.ul`
-    border-top: 1px solid ${props => props.theme.colors.background.default};
     list-style: none;
-    padding: 20px 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -90,8 +87,6 @@ const DetailInfoList = styled.ul`
         }
     }
 `;
-
-
 
 
 const Plot = styled.p`
@@ -142,10 +137,8 @@ function Detail() {
                 <img src={movie.Poster} alt={movie.Title} />
 
                 <DetailBox>
+                    <h1>{movie.Title}</h1>
                     <DetailInfo>
-                        <h1>
-                            {movie.Title}
-                        </h1>
                         <DetailInfoList>
                             <li>
                                 <strong>Year </strong>
@@ -160,8 +153,8 @@ function Detail() {
                                 {movie.Director}
                             </li>
                         </DetailInfoList>
+                        <Plot>{movie.Plot}</Plot>
                     </DetailInfo>
-                    <Plot>{movie.Plot}</Plot>
                 </DetailBox>
             </ContentBox>
         </Container>
