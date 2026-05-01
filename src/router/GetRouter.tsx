@@ -3,6 +3,9 @@ import MainLayout from "../layouts/MainLayout.tsx";
 import Home from "../pages/Home.tsx";
 import TodoPage from "../pages/todo/TodoPage.tsx";
 import CoinPage from "../pages/coin/CoinPage.tsx";
+import MoviePage from "../pages/movie/MoviePage.tsx";
+import MovieDetail from "../pages/movie/MovieDetail.tsx";
+import MovieList from "../pages/movie/MovieList.tsx";
 
 const GetRouter = createBrowserRouter([
     // "/" 로 시작하는 주소로 사용자가 들어왔다면,
@@ -16,6 +19,14 @@ const GetRouter = createBrowserRouter([
             { index: true, element: <Home /> },
             { path: "todo", element: <TodoPage /> },
             { path: "coin", element: <CoinPage /> },
+            {
+                path: "movie",
+                children: [
+                    { index: true, element: <MoviePage /> },
+                    { path: "list", element: <MovieList /> },
+                    { path: "detail/:id", element: <MovieDetail /> },
+                ],
+            },
         ],
     },
 ]);
