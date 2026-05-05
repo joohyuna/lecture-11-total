@@ -96,6 +96,7 @@ const Plot = styled.p`
     padding-top: 20px;
     opacity: 0.86;
     max-height: 360px;
+    min-height: 200px;
     overflow-y: auto;
     &::-webkit-scrollbar {
         width: 6px;

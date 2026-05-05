@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import MovieSearchBar from "./components/MovieSearchBar.tsx";
+import BooksSearchBar from "./components/BooksSearchBar.tsx";
 
 const Container = styled.div`
     display: flex;
@@ -32,15 +32,15 @@ const SearchTitle = styled.h2`
     }
 `;
 
-function MoviePage() {
+function BooksPage() {
     return (
         <Container>
-            <SearchTitle>Search Movies</SearchTitle>
+            <SearchTitle>Search Books</SearchTitle>
             <SearchBox>
-                <MovieSearchBar />
+                <BooksSearchBar />
             </SearchBox>
         </Container>
     );
 }
 
-export default MoviePage;
+export default BooksPage;
