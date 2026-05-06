@@ -20,9 +20,26 @@ export type BookItem = {
 
 type ApiResponseType = { items: BookItem[] };
 
-// styled. 으로 연결할 때에는 기본 태그일 때
-const Wrap = styled.div`
-    padding: 30px;
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1000px;
+`;
+
+const SearchTitle = styled.h2`
+    font-size: 28px;
+    padding: 20px;
+    color: ${props => props.theme.colors.primary};
+    text-align: center;
+    span {
+        font-weight: 300;
+        font-size: 22px;
+    }
 `;
 
 const StyleLink = styled(Link)`
@@ -31,12 +48,14 @@ const StyleLink = styled(Link)`
     gap: 12px;
     padding: 12px;
     border-radius: 8px;
-    background: white;
+    background: ${props => props.theme.colors.background.paper};
     margin-bottom: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid ${props => props.theme.colors.divider};
     transition: all 0.5s;
+    flex: 1;
+    width: 100%;
     &:hover {
-        background-color: #f3f3f3;
+        background-color: ${props => props.theme.colors.divider};
     }
 `;
 
@@ -63,7 +82,8 @@ const Title = styled.div`
 
 const Authors = styled.div`
     font-size: 12px;
-    color: #555;
+    color: ${props => props.theme.colors.text.default};
+    opacity: 0.7;
 `;
 
 function BooksSearch() {
@@ -96,11 +116,11 @@ function BooksSearch() {
     }, [keyword]);
 
     return (
-        <Wrap>
-            <h3>검색 결과 : {keyword}</h3>
+        <Container>
+            <SearchTitle>Search Books : <span>Keywords</span> {keyword}</SearchTitle>
 
             {list.map((value, index) => (
-                <StyleLink key={index} to={`/detail/${value.id}`}>
+                <StyleLink key={index} to={`/book/detail/${value.id}`}>
                     {value.volumeInfo.imageLinks ? (
                         <Cover
                             src={value.volumeInfo.imageLinks?.thumbnail}
@@ -115,7 +135,7 @@ function BooksSearch() {
                     </div>
                 </StyleLink>
             ))}
-        </Wrap>
+        </Container>
     );
 }
 
